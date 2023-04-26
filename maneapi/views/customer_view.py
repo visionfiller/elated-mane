@@ -22,6 +22,7 @@ class CustomerView(ViewSet):
         name = request.data["name"]
 
         customer.stylist = User.objects.get(pk=stylist_id)
+        
         customer.name = name
         customer.save()
 
@@ -70,4 +71,4 @@ class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         """JSON serializer for customer creator"""
         model = Customer
-        fields = ('id', 'stylist', 'name', 'date_created',)
+        fields = ('id', 'stylist','style', 'name', 'date_created', 'appointments',)
